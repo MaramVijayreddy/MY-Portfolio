@@ -1,43 +1,76 @@
-
+import { useState } from "react";
 import { Github } from "lucide-react";
 
 const ProjectsSection = () => {
+  const [filter, setFilter] = useState("All");
+
   const projects = [
     {
       id: 1,
       title: "Crop Recommendation System",
+      category: "ML",
       description:
         "A machine learning application recommending optimal crops based on soil and weather inputs.",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format",
+      image:
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format",
       technologies: ["Python", "FastAPI", "scikit-learn"],
-      githubUrl: "#",
-      demoUrl: "https://agri-wise-crop-advisor.vercel.app/",
+      githubUrl: "#", // Add GitHub repo if available
+      demoUrl: "https://agri-wise-crop-advisor.vercel.app/", // ✅ Live demo link added
     },
   ];
 
+  const filteredProjects =
+    filter === "All"
+      ? projects
+      : projects.filter((project) => project.category === filter);
+
   return (
-    <section id="projects" className="py-20 bg-gradient-to-br from-background to-secondary/30">
+    <section
+      id="projects"
+      className="py-20 bg-gradient-to-br from-background to-secondary/30"
+    >
       <div className="container-section">
         <h2 className="section-title">Projects</h2>
-        
-        {/* Filter - Currently one project but structured for future additions */}
+
+        {/* Filter Buttons */}
         <div className="flex justify-center mb-8">
           <div className="inline-flex p-1 bg-secondary rounded-lg">
-            <button className="px-4 py-2 rounded-md bg-primary text-primary-foreground">
+            <button
+              onClick={() => setFilter("All")}
+              className={`px-4 py-2 rounded-md ${
+                filter === "All"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-foreground hover:bg-secondary/80"
+              }`}
+            >
               All Projects
             </button>
-            <button className="px-4 py-2 rounded-md text-foreground hover:bg-secondary/80">
+            <button
+              onClick={() => setFilter("ML")}
+              className={`px-4 py-2 rounded-md ${
+                filter === "ML"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-foreground hover:bg-secondary/80"
+              }`}
+            >
               ML Projects
             </button>
-            <button className="px-4 py-2 rounded-md text-foreground hover:bg-secondary/80">
+            <button
+              onClick={() => setFilter("Web")}
+              className={`px-4 py-2 rounded-md ${
+                filter === "Web"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-foreground hover:bg-secondary/80"
+              }`}
+            >
               Web Apps
             </button>
           </div>
         </div>
-        
+
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
               className="bg-card rounded-2xl overflow-hidden shadow-md transition-transform duration-300 hover:shadow-xl hover:-translate-y-2"
@@ -47,6 +80,7 @@ const ProjectsSection = () => {
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  loading="lazy"
                 />
               </div>
               <div className="p-6">
@@ -70,6 +104,7 @@ const ProjectsSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors"
+                    aria-label="View GitHub Repository"
                   >
                     <Github size={18} />
                     <span>GitHub</span>
@@ -79,11 +114,7 @@ const ProjectsSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-colors"
-                  //  onClick={(e) => {
-                    //  e.preventDefault();
-                      //alert("Demo will be available soon!");
-                    //}
-                    }
+                    aria-label="View Live Demo"
                   >
                     <span>Live Demo</span>
                   </a>
