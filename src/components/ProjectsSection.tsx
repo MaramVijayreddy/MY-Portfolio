@@ -11,7 +11,7 @@ const ProjectsSection = () => {
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format",
       technologies: ["Python", "FastAPI", "scikit-learn"],
       githubUrl: "#",
-      demoUrl: "#",
+      demoUrl: "https://agri-wise-crop-advisor.vercel.app/",
     },
   ];
 
