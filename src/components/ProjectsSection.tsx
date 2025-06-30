@@ -79,10 +79,11 @@ const ProjectsSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-colors"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      alert("Demo will be available soon!");
-                    }}
+                  //  onClick={(e) => {
+                    //  e.preventDefault();
+                      //alert("Demo will be available soon!");
+                    //}
+                    }
                   >
                     <span>Live Demo</span>
                   </a>
