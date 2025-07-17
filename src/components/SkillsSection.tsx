@@ -21,9 +21,9 @@ const SkillsSection = () => {
     { name: "matplotlib", level: 75, category: "ml" },
     { name: "SQL", level: 70, category: "ml" },
     { name: "FastAPI", level: 65, category: "backend" },
-    { name: "Flask", level: 40, category: "backend" },
+   // { name: "Flask", level: 40, category: "backend" },
     { name: "React", level: 70, category: "frontend" },
-    { name: "Flutter", level: 65, category: "frontend" },
+    //{ name: "Flutter", level: 65, category: "frontend" },
     { name: "Android Studio", level: 60, category: "frontend" },
   ];
   
